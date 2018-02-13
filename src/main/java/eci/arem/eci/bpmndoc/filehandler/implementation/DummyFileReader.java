@@ -1,13 +1,13 @@
 package eci.arem.eci.bpmndoc.filehandler.implementation;
 
 import eci.arem.eci.bpmndoc.filehandler.FileException;
-import eci.arem.eci.bpmndoc.filehandler.FileReader;
+import eci.arem.eci.bpmndoc.filehandler.AbstractFileReader;
 
 /**
  *
  * @author Alejandro Anzola email: alejandro.anzola@mail.escuelaing.edu.co
  */
-public class DummyFileReader implements FileReader {
+public class DummyFileReader implements AbstractFileReader {
 
     @Override
     public String getText(String filename) throws FileException {

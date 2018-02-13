@@ -2,8 +2,8 @@ package eci.arem.eci.bpmndoc.factory;
 
 import eci.arem.eci.bpmndoc.OutputGenerator.OutputGenerator;
 import eci.arem.eci.bpmndoc.bpmnparser.BPMNParser;
-import eci.arem.eci.bpmndoc.filehandler.FileReader;
-import eci.arem.eci.bpmndoc.filehandler.FileWriter;
+import eci.arem.eci.bpmndoc.filehandler.AbstractFileWriter;
+import eci.arem.eci.bpmndoc.filehandler.AbstractFileReader;
 
 /**
  *
@@ -11,9 +11,9 @@ import eci.arem.eci.bpmndoc.filehandler.FileWriter;
  */
 public interface BPMNDocFactory {
     
-    FileReader getFileReader();
+    AbstractFileReader getFileReader();
     
-    FileWriter getFileWriter();
+    AbstractFileWriter getFileWriter();
     
     OutputGenerator getOutputGenerator();
     

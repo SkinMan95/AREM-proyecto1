@@ -4,7 +4,7 @@ package eci.arem.eci.bpmndoc.filehandler;
  *
  * @author Alejandro Anzola email: alejandro.anzola@mail.escuelaing.edu.co
  */
-public interface FileReader {
+public interface AbstractFileReader {
 
     /**
      * Reads the file previously specified and returns it's contents as a string

@@ -6,11 +6,8 @@ import eci.arem.eci.bpmndoc.bpmnparser.BPMNParser;
 import eci.arem.eci.bpmndoc.bpmnparser.BPMNParserException;
 import eci.arem.eci.bpmndoc.element.Element;
 import eci.arem.eci.bpmndoc.factory.BPMNDocFactory;
-import eci.arem.eci.bpmndoc.factory.implementation.DummyBPMNDocFactory;
-import eci.arem.eci.bpmndoc.factory.implementation.DummyHTMLBPMNDocFactory;
+import eci.arem.eci.bpmndoc.factory.implementation.HTMLBPMNDocFactory;
 import eci.arem.eci.bpmndoc.filehandler.FileException;
-import eci.arem.eci.bpmndoc.filehandler.FileReader;
-import eci.arem.eci.bpmndoc.filehandler.FileWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.apache.commons.cli.CommandLine;
@@ -20,6 +17,8 @@ import org.apache.commons.cli.HelpFormatter;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
+import eci.arem.eci.bpmndoc.filehandler.AbstractFileWriter;
+import eci.arem.eci.bpmndoc.filehandler.AbstractFileReader;
 
 /**
  * Main class
@@ -63,7 +62,11 @@ public class BPMNDoc {
             CommandLine line = parser.parse(options, args);
 
             //System.out.println(line.getOptionValue("src"));
-            execute(line.getOptionValue("src"), "TODO");
+            String dst = "output_documentation";
+            if (line.hasOption("dst")) {
+                dst = line.getOptionValue("dst");
+            }
+            execute(line.getOptionValue("src"), dst);
 
         } catch (ParseException exp) {
             System.out.println("Unexpected exception:\n" + exp.getMessage());
@@ -75,10 +78,10 @@ public class BPMNDoc {
 
     private static void execute(String src, String dst) {
 
-        BPMNDocFactory factory = new DummyHTMLBPMNDocFactory();
+        BPMNDocFactory factory = new HTMLBPMNDocFactory();
 
-        FileReader fr = factory.getFileReader();
-        FileWriter fw = factory.getFileWriter();
+        AbstractFileReader fr = factory.getFileReader();
+        AbstractFileWriter fw = factory.getFileWriter();
         OutputGenerator og = factory.getOutputGenerator();
         BPMNParser par = factory.getBPMNParser();
 
@@ -86,12 +89,11 @@ public class BPMNDoc {
             String data = fr.getText(src);
             Element root = par.getRootElement(data);
             String out = og.getFormatedOutput(root);
-            fw.writeData(dst, false, out);
-        } catch (FileException ex) {
-            Logger.getLogger(BPMNDoc.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (BPMNParserException ex) {
-            Logger.getLogger(BPMNDoc.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (OutputGeneratorException ex) {
+            if (!dst.contains(".")) {
+                dst = dst + "." + og.getFilenameExtension();
+            }
+            fw.writeData(dst, true, out); // TODO pedir opcion de sobreescritura
+        } catch (FileException | BPMNParserException | OutputGeneratorException ex) {
             Logger.getLogger(BPMNDoc.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

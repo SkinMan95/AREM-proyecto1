@@ -4,7 +4,7 @@ package eci.arem.eci.bpmndoc.filehandler;
  *
  * @author Alejandro Anzola email: alejandro.anzola@mail.escuelaing.edu.co
  */
-public interface FileWriter {
+public interface AbstractFileWriter {
 
     /**
      * Writes the data to the specified
