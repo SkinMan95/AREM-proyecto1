@@ -7,6 +7,7 @@ import eci.arem.eci.bpmndoc.bpmnparser.BPMNParserException;
 import eci.arem.eci.bpmndoc.element.Element;
 import eci.arem.eci.bpmndoc.factory.BPMNDocFactory;
 import eci.arem.eci.bpmndoc.factory.implementation.DummyBPMNDocFactory;
+import eci.arem.eci.bpmndoc.factory.implementation.DummyHTMLBPMNDocFactory;
 import eci.arem.eci.bpmndoc.filehandler.FileException;
 import eci.arem.eci.bpmndoc.filehandler.FileReader;
 import eci.arem.eci.bpmndoc.filehandler.FileWriter;
@@ -74,7 +75,7 @@ public class BPMNDoc {
 
     private static void execute(String src, String dst) {
 
-        BPMNDocFactory factory = new DummyBPMNDocFactory();
+        BPMNDocFactory factory = new DummyHTMLBPMNDocFactory();
 
         FileReader fr = factory.getFileReader();
         FileWriter fw = factory.getFileWriter();
