@@ -53,7 +53,7 @@ public class BasicBPMNParser implements BPMNParser {
         BPMNElement res = null;
 
         String name = root.getAttribute("name");
-        String type = root.getTagName();
+        String type = root.getTagName().replace("model:", "");
         String doc = getElementDocumentation(root);
 
         NodeList l = root.getChildNodes();

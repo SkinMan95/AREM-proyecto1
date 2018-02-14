@@ -6,11 +6,11 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: #990000;
-    font-size: 40px;
+    font-size: 18px;
 }
 
 .title {
-    font-size: 50px
+    font-size: 25px
 }
 
 .contenedor {
@@ -23,24 +23,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h2 {
-    font-size: 30px;
-}
-
-h3 {
-    font-size: 20px;
-}
-
-h4 {
     font-size: 17px;
 }
 
-h4, h5, h6 {
+h3 {
+    font-size: 16px;
+}
+
+h4 {
     font-size: 15px;
+}
+
+h4, h5, h6 {
+    font-size: 14px;
 }
 
 p {
     font-family: arial, helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     color: black;
 }
 
