@@ -1,10 +1,10 @@
 BPMN Documentation Tool
 =======================
 
-La herramienta BPMNDoc es una herramienta que ayuda en la generación de documentación para diagramas
-de procesos de negocio hechos en el software de Bonita de [Bonitasoft](https://www.bonitasoft.com/), donde
-la generación de la misma es de forma similar a la generada a la conocida documentación de Java generada con
-la herramienta *Javadoc*.
+La herramienta BPMNDoc es una herramienta que ayuda en la generación de documentación para diagramas 
+de procesos de negocio hechos en el software de Bonita de [Bonitasoft](https://www.bonitasoft.com/), donde 
+la documentación se realiza de forma similar a la conocida documentación de Java que se produce con la
+herramienta *Javadoc*.
 
 ## Formato XML de BPMN
 Se parte por identificar los componentes de un archivo XML generado por Bonita, de donde, basándose en la 
